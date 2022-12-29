@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // This defines what 1rem is
+    font-size: 62.5%;   /* 1 rem = 10px,  10px/16px=0.625 */
+
+    /* h seira pou 8a kanw @include, paizei rolo! Oso pio mikro se px 
+    prepei na paei pio katw sth seira gia na triggarei 
+    otan kai oi duo sun8hkes ikanopoiountai (gi auto vazw, prwta to <1200
+    kai meta ean einai <1200 , an einai kai <900 tote ektelese auto (last declaration)
+    
+    *an exw ksekinhsei apo mobile width first anti gia desktop, isxuei akrivws to antistrofo
+
+    * fusika ta px gia ka8e 1 rem einai endeiktika, kai ta allazw opws 8elw egw ana periptwsh */
+
+    @include respond(tab-land) { //width < 1200? 
+        font-size: 56.25%;     /* 1 rem = 9px, 9px/16px = 0,5625 */
+    }
+
+    @include respond(tab-port) { //width < 900?
+        font-size: 50%;     /* 1 rem = 8px, 8px/16px = 0,5 */
+    }
+
+    @include respond(big-desktop) {  //width > 1800?
+        font-size: 75%;     /* 1 rem = 12px, 12px/16px = 0,75 */
+    } 
+}
+
+body {  
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) { 
+        padding: 0;   
+    }
+}
+
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
